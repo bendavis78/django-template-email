@@ -2,7 +2,7 @@
 Django Template Email
 =====================
 
-This module contains a TemplateEmail class that allows you to easily build
+django-template-email provides a set of tools that allows you to easily build 
 plain-text or HTML emails using templates.
 
 Usage

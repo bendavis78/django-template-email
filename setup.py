@@ -6,7 +6,7 @@ setup(
     author='Ben Davis',
     author_email='code@savidworks.com',
     url='http://www.savidworks.com',
-    description='A tool for building email messages using django templates',
+    description='A useful tool for building email messages using django templates',
     keywords='savid',
     classifiers = [
         'Development Status :: 4 - Beta',
