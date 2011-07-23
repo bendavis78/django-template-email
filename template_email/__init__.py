@@ -60,7 +60,7 @@ class TemplateEmail(EmailMultiAlternatives):
         
         for i, recip in enumerate(self.to):
             # Convert user objects if they're in the recipients list
-            if type(self.to[i]) == User:
+            if isinstance(self.to[i], User):
                 user = self.to[i]
                 self.to[i] = '"%s %s" <%s>' % (user.first_name, user.last_name, user.email)
         
