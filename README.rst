@@ -8,7 +8,7 @@ plain-text or HTML emails using templates.
 Usage
 =====
 After installing django-templatee-email, add ``template_email`` to your 
-``INSTALLED_APPS`` in ``sesttingss.py``.
+``INSTALLED_APPS`` in ``settings.py``.
 
 Templates
 ---------
