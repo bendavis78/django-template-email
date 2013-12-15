@@ -1,4 +1,8 @@
 from setuptools import setup, find_packages
+import os
+
+dir = os.path.dirname(__file__)
+readme = os.path.join(dir, 'README.rst')
 
 setup(
     name='django-template-email',
@@ -17,5 +21,6 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules'
     ],
     packages=find_packages(),
-    include_package_data=True
+    include_package_data=True,
+    long_description=open(readme).read()
 )
