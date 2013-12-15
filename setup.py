@@ -5,7 +5,7 @@ setup(
     version='0.1',
     author='Ben Davis',
     author_email='code@bendavismedia',
-    url='http://www.savidworks.com',
+    url='http://github.com/bendavis78/django-template-email',
     description=('A useful tool for building email messages using django '
                  'templates'),
     keywords='savid',
