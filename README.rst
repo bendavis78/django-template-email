@@ -54,7 +54,7 @@ class while passing it your template and (optionally) a context dict::
   from template_email import TemplateEmail
   
   context = {'first_name': user.first_name}
-  email = TemplateEmail(template='email/confirmation_message.html', context)
+  email = TemplateEmail(template='email/confirmation_message.html', context=context)
   email.send()
 
 
