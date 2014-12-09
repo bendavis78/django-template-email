@@ -84,3 +84,14 @@ the class's ``subject``, ``body``, and ``bodyhtml`` properties.
 As a convienience, the ``send()`` method will automatically convert User model
 instances to email recipients, formatting them as "first_name last_name 
 <email>".
+
+
+Template context processors
+---------------------------
+Set ``TEMPLATE_EMAIL_USE_CONTEXT_PROCESSORS = True`` in ``settings.py`` to have
+TemplateEmail run Django template context processors from
+``TEMPLATE_CONTEXT_PROCESSORS`` to collect the initial context. The ``request``
+parameter will be passed as ``None``. All exceptions will be silenced.
+
+This can be used to pass request-independent context variables (such as that
+come from ``django.core.context_processors.media``) to your email templates.
