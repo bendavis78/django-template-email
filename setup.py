@@ -22,5 +22,6 @@ setup(
     ],
     packages=find_packages(),
     include_package_data=True,
-    long_description=open(readme).read()
+    long_description=open(readme).read(),
+    requires=['inlinestyler']
 )

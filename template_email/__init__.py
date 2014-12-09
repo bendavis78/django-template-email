@@ -1,6 +1,8 @@
+from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser
 from django.core.mail import EmailMultiAlternatives
 from django.template import loader, Context
+from inlinestyler.utils import inline_css
 
 
 class TemplateEmail(EmailMultiAlternatives):
@@ -42,6 +44,8 @@ class TemplateEmail(EmailMultiAlternatives):
         if body != '':
             self.body = body
         if html != '':
+            if getattr(settings, "TEMPLATE_EMAIL_INLINE_CSS", True):
+                html = inline_css(html)
             self.html = html
 
         self._rendered = True

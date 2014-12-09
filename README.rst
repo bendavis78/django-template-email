@@ -84,3 +84,13 @@ the class's ``subject``, ``body``, and ``bodyhtml`` properties.
 As a convienience, the ``send()`` method will automatically convert User model
 instances to email recipients, formatting them as "first_name last_name 
 <email>".
+
+
+Inline styles
+-------------
+Some email clients strip out <head> and <style> tags from emails, so
+TemplateEmail will automatically inline your CSS styles as long as you include
+them directly within <style> tags.
+
+You can disable this behavior by setting ``TEMPLATE_EMAIL_INLINE_CSS = False``
+in ``settings.py``.
