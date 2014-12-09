@@ -1,6 +1,8 @@
+from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser
 from django.core.mail import EmailMultiAlternatives
 from django.template import loader, Context
+from django.template.context import get_standard_processors
 
 
 class TemplateEmail(EmailMultiAlternatives):
@@ -26,6 +28,12 @@ class TemplateEmail(EmailMultiAlternatives):
         tpl = loader.get_template(self.template)
 
         context = self._default_context
+        if getattr(settings, "TEMPLATE_EMAIL_USE_CONTEXT_PROCESSORS", False):
+            for processor in get_standard_processors():
+                try:
+                    context.update(processor(None))
+                except:
+                    pass
         context.update(self.context)
         context.update(self._override_context)
 
