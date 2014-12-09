@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractBaseUser
 from django.core.mail import EmailMultiAlternatives
 from django.template import loader, Context
 from inlinestyler.utils import inline_css
+import lxml.html
 
 
 class TemplateEmail(EmailMultiAlternatives):
@@ -44,6 +45,11 @@ class TemplateEmail(EmailMultiAlternatives):
         if body != '':
             self.body = body
         if html != '':
+            base_url = getattr(settings, "TEMPLATE_EMAIL_BASE_URL")
+            if base_url:
+                html_doc = lxml.html.fromstring(html)
+                html_doc.make_links_absolute(base_url)
+                html = lxml.html.tostring(html_doc, include_meta_content_type=True)
             if getattr(settings, "TEMPLATE_EMAIL_INLINE_CSS", True):
                 html = inline_css(html)
             self.html = html

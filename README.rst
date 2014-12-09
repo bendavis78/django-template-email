@@ -94,3 +94,9 @@ them directly within <style> tags.
 
 You can disable this behavior by setting ``TEMPLATE_EMAIL_INLINE_CSS = False``
 in ``settings.py``.
+
+
+Absolute links
+--------------
+Set ``TEMPLATE_EMAIL_BASE_URL`` in ``settings.py`` to the base url of your site
+to have TemplateEmail automatically convert relative links to absolute.
