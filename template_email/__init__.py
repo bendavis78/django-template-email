@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractBaseUser
 from django.core.mail import EmailMultiAlternatives
 from django.template import loader, Context
 
@@ -58,9 +58,7 @@ class TemplateEmail(EmailMultiAlternatives):
 
         for i, recip in enumerate(self.to):
             # Convert user objects if they're in the recipients list
-            if isinstance(self.to[i], User):
-                user = self.to[i]
-                self.to[i] = '"%s %s" <%s>' % (user.first_name, user.last_name,
-                                               user.email)
+            if isinstance(recip, AbstractBaseUser):
+                self.to[i] = '"%s" <%s>' % (recip.get_full_name(), recip.email)
 
         super(TemplateEmail, self).send(*args, **kwargs)
