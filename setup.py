@@ -23,5 +23,5 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     long_description=open(readme).read(),
-    requires=['inlinestyler', 'lxml']
+    install_requires=['inlinestyler>=0.2.0', 'lxml>=3.2.3']
 )
