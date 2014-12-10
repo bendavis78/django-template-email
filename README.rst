@@ -98,5 +98,5 @@ in ``settings.py``.
 
 Absolute links
 --------------
-Set ``TEMPLATE_EMAIL_BASE_URL`` in ``settings.py`` to the base url of your site
+Set ``TEMPLATE_EMAIL_BASE_URL`` in ``settings.py`` to the base URL of your site
 to have TemplateEmail automatically convert relative links to absolute.
