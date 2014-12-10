@@ -45,7 +45,7 @@ class TemplateEmail(EmailMultiAlternatives):
         if body != '':
             self.body = body
         if html != '':
-            base_url = getattr(settings, "TEMPLATE_EMAIL_BASE_URL")
+            base_url = getattr(settings, "TEMPLATE_EMAIL_BASE_URL", None)
             if base_url:
                 html_doc = lxml.html.fromstring(html)
                 html_doc.make_links_absolute(base_url)
