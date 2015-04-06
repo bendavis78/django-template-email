@@ -23,5 +23,5 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     long_description=open(readme).read(),
-    install_requires=['inlinestyler>=0.2.0', 'lxml>=3.2.3']
+    install_requires=['premailer>=2.8.3', 'lxml>=3.2.3']
 )
