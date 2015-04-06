@@ -50,7 +50,7 @@ class TemplateEmail(EmailMultiAlternatives):
             if base_url:
                 html_doc = html_doc or lxml.html.fromstring(html)
                 html_doc.make_links_absolute(base_url)
-            if getattr(settings, "TEMPLATE_EMAIL_INLINE_CSS", True):
+            if getattr(settings, "TEMPLATE_EMAIL_INLINE_CSS", False):
                 html_doc = html_doc or lxml.html.fromstring(html)
                 html_doc = premailer.Premailer(html_doc, **getattr(settings, "TEMPLATE_EMAIL_INLINE_CSS_OPTIONS", {})).transform()
             if html_doc:

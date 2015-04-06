@@ -88,12 +88,11 @@ instances to email recipients, formatting them as "first_name last_name
 
 Inline styles
 -------------
-Some email clients strip out <head> and <style> tags from emails, so
-TemplateEmail will automatically inline your CSS styles as long as you include
+Some email clients strip out <head> and <style> tags from emails, and
+TemplateEmail can automatically inline your CSS styles as long as you include
 them directly within <style> tags.
 
-You can disable this behavior by setting ``TEMPLATE_EMAIL_INLINE_CSS = False``
-in ``settings.py``.
+To enable this, add ``TEMPLATE_EMAIL_INLINE_CSS = True`` to your ``settings.py``.
 
 
 Absolute links
