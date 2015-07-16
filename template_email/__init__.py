@@ -1,3 +1,6 @@
+import lxml.html
+import premailer
+
 from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser
 from django.core.mail import EmailMultiAlternatives
@@ -50,6 +53,19 @@ class TemplateEmail(EmailMultiAlternatives):
         if body != '':
             self.body = body
         if html != '':
+            html_doc = None
+            base_url = getattr(settings, "TEMPLATE_EMAIL_BASE_URL", None)
+            if base_url:
+                html_doc = html_doc or lxml.html.fromstring(html)
+                html_doc.make_links_absolute(base_url)
+            if getattr(settings, "TEMPLATE_EMAIL_INLINE_CSS", False):
+                html_doc = html_doc or lxml.html.fromstring(html)
+                opts = getattr(
+                    settings, "TEMPLATE_EMAIL_INLINE_CSS_OPTIONS", {})
+                html_doc = premailer.Premailer(html_doc, **opts).transform()
+            if html_doc:
+                html = lxml.html.tostring(
+                    html_doc, include_meta_content_type=True).decode('utf-8')
             self.html = html
 
         self._rendered = True
